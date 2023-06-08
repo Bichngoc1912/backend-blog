@@ -15,6 +15,12 @@ export class CategoryEntity {
   @Column()
   page: number;
 
+  @Column({ type: 'timestamp' })
+  updatedAt: Date;
+
+  @Column()
+  createdAt: Date;
+
   @OneToMany(() => ArticleEntity, (article: ArticleEntity) => article)
   articleList: ArticleDto[];
 }

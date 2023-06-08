@@ -14,6 +14,5 @@ export class CategoryDto extends BaseDto {
 
   @IsNotEmpty()
   @IsNumber()
-  @Expose()
   page: number;
 }

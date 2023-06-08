@@ -41,10 +41,10 @@ export class ArticleEntity {
   @Column('text', { array: true })
   tags: string[];
 
-  @OneToOne(() => CategoryEntity, (category: CategoryEntity) => category.id)
+  @OneToOne(() => CategoryEntity, (category: CategoryEntity) => category)
   category: CategoryDto[];
 
-  @OneToMany(() => CommentEntity, (comment: CommentEntity) => comment.id)
+  @OneToMany(() => CommentEntity, (comment: CommentEntity) => comment)
   comment: CommentDto[];
 
   @Column()

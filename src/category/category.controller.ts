@@ -1,21 +1,23 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CategoryServices } from './category.services';
+import { CategoryListRequest } from './category.types';
 
 @Controller('/api/category')
 export class CategoryController {
   constructor(private readonly categoryServices: CategoryServices) {}
 
   @Get()
-  categoryList() {
-    return this.categoryServices.categoryList();
+  categoryList(@Query() param: CategoryListRequest) {
+    const { page, limit } = param;
+    return this.categoryServices.categoryList({ page: page, limit: limit });
   }
 
-  @Post()
+  @Post(':id')
   removeCategory(@Body() id: number) {
     return this.categoryServices.removeCategory(id);
   }
 
-  @Post()
+  @Post('/add')
   addCategory() {
     return this.categoryServices.addCategory();
   }

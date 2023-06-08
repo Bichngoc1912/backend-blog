@@ -10,7 +10,7 @@ export class ArticleService {
     private readonly articleRepository: Repository<ArticleEntity>,
   ) {}
 
-  async createArticle(): Promise<string> {
+  async createArticle(): Promise<any> {
     return 'create article';
   }
 
@@ -26,8 +26,8 @@ export class ArticleService {
     return 'filter by category';
   }
 
-  async getArticleList(): Promise<string> {
-    return 'get article list';
+  async getArticleList(): Promise<any> {
+    return this.articleRepository.find();
   }
 
   async getArticleById(): Promise<string> {
